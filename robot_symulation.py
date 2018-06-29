@@ -1,11 +1,14 @@
 import random
+'''
+Simple symulation of robots collecting items. Only the closest one is used to collect.
+'''
 dimension = 10  #dimension of field
 max_n = dimension * 2  #max distance
-loop_w = 3  #number of loops
+loop_w = 5  #number of loops
 
 robot_1 = {"x":1, "y":1, "z":max_n, "name":1, "score":0, "step":0}
-robot_2 = {"x":10, "y":10, "z":max_n, "name":2, "score":0, "step":0}
-robot_3 = {"x":5, "y":5, "z":max_n, "name":3, "score":0, "step":0}
+robot_2 = {"x":10, "y":7, "z":max_n, "name":2, "score":0, "step":0}
+robot_3 = {"x":4, "y":5, "z":max_n, "name":3, "score":0, "step":0}
 
 
 robots = (robot_1, robot_2, robot_3)
@@ -30,7 +33,7 @@ def wood_random():  #random wood generator
         wood_y = random.choice(crate_y)
 
     wood_xy = {"x":wood_x, "y":wood_y}
-    return wood_xy
+    return wood_xy  #returning dictionary with wood coordinates (X and Y)
 
 
 def closest_robot(wood, diff_robot=max_n):  #choosing closest robot
@@ -45,7 +48,7 @@ def closest_robot(wood, diff_robot=max_n):  #choosing closest robot
         if variable_robot["z"] < diff_robot:
             diff_robot = variable_robot["z"]
             diff_name = variable_robot["name"] - 1
-    return (robots[diff_name])
+    return (robots[diff_name])  #returning robot_n dictionary {"name":?}
 
 
 def printing():  #printing field with robots and wood
@@ -58,9 +61,9 @@ def printing():  #printing field with robots and wood
                     print(" r ", end=" ")
             elif ix == wood_r["x"] and iy == wood_r["y"]:
                 if iy == dimension:
-                    print(" W ")
+                    print(" w ")
                 else:
-                    print(" W ", end=" ")
+                    print(" w ", end=" ")
             else:
                 if iy < dimension:
                     print(" . ", end=" ")

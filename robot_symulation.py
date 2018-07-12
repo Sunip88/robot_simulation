@@ -2,7 +2,7 @@ import random
 '''
 Simple symulation of robots collecting items. Only the closest one is used to collect.
 All steps are printed one after another and they are separated with line of *
-test4
+test5
 '''
 dimension = 10  #dimension of field
 max_n = dimension * 2  #max distance
